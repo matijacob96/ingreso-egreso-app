@@ -12,7 +12,7 @@ import { filter } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   userSb: Subscription;
-  user: Usuario;
+  nombre: string;
 
   constructor(private store: Store<AppState>) {}
 
@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       .select('user')
       .pipe(filter(({ user }) => user != null))
       .subscribe(({ user }) => {
-        this.user = user;
+        this.nombre = user?.nombre;
       });
   }
 

@@ -14,7 +14,7 @@ import { filter } from 'rxjs/operators';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   userSb: Subscription;
-  user: Usuario;
+  nombre: string;
 
   constructor(
     private auth: AuthService,
@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
       .select('user')
       .pipe(filter(({ user }) => user != null))
       .subscribe(({ user }) => {
-        this.user = user;
+        this.nombre = user?.nombre;
       });
   }
 
